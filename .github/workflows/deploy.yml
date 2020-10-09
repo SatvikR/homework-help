@@ -27,7 +27,7 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/hw-api:latest
-      - name: SSH test
+      - name: SSH Deploy
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
