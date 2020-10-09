@@ -16,4 +16,9 @@ jobs:
           port: ${{ secrets.PORT }}
           key: ${{ secrets.KEY }}
           username: ${{ secrets.USERNAME }}
-          script: whoami
+          script: |
+            sudo docker stop hw_api_latest
+            sudo docker rm hw_api_latest
+            sudo docker rmi ${{ secrets.DOCKER_USERNAME }}/hw-api:latest
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/hw-api:latest
+            sudo docker run -p 8080:8000 --name hw_api_latest -d ${{ secrets.DOCKER_USERNAME }}/hw-api:latest
