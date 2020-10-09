@@ -1,0 +1,20 @@
+{
+  "name": "homework-help",
+  "version": "0.0.0",
+  "description": "Homework Helper written in Typescript",
+  "repository": "https://github.com/SatvikR/homework-help",
+  "author": "Satvik Reddy",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "lerna run dev",
+    "start": "lerna run start",
+    "build": "lerna run build"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
+}
