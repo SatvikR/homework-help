@@ -27,6 +27,21 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/hw-api:latest
+      - name: Create .env file
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_DB_URI: ${{ secrets.DB_URI }}
+          envkey_COMPOSE_PROJECT_NAME: hw-api
+          file_name: .env
+      - name: Copy Build files
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.KEY }}
+          username: ${{ secrets.USERNAME }}
+          source: ".env,docker-compose.yml"
+          target: "~"
       - name: SSH Deploy
         uses: appleboy/ssh-action@master
         with:
@@ -35,8 +50,9 @@ jobs:
           key: ${{ secrets.KEY }}
           username: ${{ secrets.USERNAME }}
           script: |
-            sudo docker stop hw_api_latest
-            sudo docker rm hw_api_latest
-            sudo docker rmi ${{ secrets.DOCKER_USERNAME }}/hw-api:latest
-            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/hw-api:latest
-            sudo docker run -p 8080:8000 --name hw_api_latest -d ${{ secrets.DOCKER_USERNAME }}/hw-api:latest
+            sudo docker stop app
+            sudo docker stop mongo
+            sudo docker rm app
+            sudo docker rm mongo
+            sudo docker rmi satvikr/hw-api:latest
+            sudo docker-compose up -d
