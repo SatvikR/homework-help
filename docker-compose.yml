@@ -6,7 +6,7 @@ services:
     container_name: mongo
     expose:
       - 27017
-    volumes: /data/db:/data/db
+    volumes: ["/data/db:/data/db"]
   app:
     image: satvikr/hw-api:latest
     container_name: app
