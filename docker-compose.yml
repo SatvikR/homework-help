@@ -10,6 +10,8 @@ services:
   app:
     image: satvikr/hw-api:latest
     container_name: app
+    depends_on:
+      - mongo
     ports:
       - 8080:8000
     env_file:
