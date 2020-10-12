@@ -2,6 +2,8 @@ import express from "express";
 import User from "../models/User";
 import { IUser } from "../types/models";
 import argon2 from "argon2";
+import { generate_token, save_token } from "../auth";
+import { redis } from "../server";
 
 const router = express.Router();
 
@@ -31,10 +33,14 @@ router.route("/signup").post(async (req, res) => {
       password: await hashed_password,
     });
 
-    await new_user.save();
+    const refresh = generate_token("refresh", new_user._id);
+    const access = generate_token("access", new_user._id);
+
+    await Promise.all([new_user.save(), save_token(refresh, new_user._id)]);
 
     return res.json({
-      message: "User created",
+      refresh: refresh.token,
+      access: access,
     });
   } catch {
     return res.status(500).json({
@@ -68,8 +74,42 @@ router.route("/login").post(async (req, res) => {
       });
     }
 
+    const refresh = generate_token("refresh", target_user._id);
+    const access = generate_token("access", target_user._id);
+
+    await save_token(refresh, target_user._id);
+
     return res.json({
-      message: "Login succesful",
+      refresh: refresh.token,
+      access: access,
+    });
+  } catch {
+    return res.status(500).json({
+      error: "Internal server error",
+    });
+  }
+});
+
+router.route("/logout").delete(async (req, res) => {
+  try {
+    const token: string | null = req.body.token;
+
+    if (!token) {
+      return res.status(401).json({
+        error: "Token not found",
+      });
+    }
+
+    if (!(await redis.exists(token))) {
+      return res.status(401).json({
+        error: "Refresh token does not exist",
+      });
+    }
+
+    await redis.del(token);
+
+    return res.json({
+      message: "Token Deleted",
     });
   } catch {
     return res.status(500).json({

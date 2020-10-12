@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import router from "./routes";
 import mongoose from "mongoose";
+import Redis from "ioredis";
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -24,6 +25,12 @@ mongoose.connect(db_uri, {
 
 mongoose.connection.on("open", () => {
   console.log(`Mongoose successfully connected to ${mongoose.connection.name}`);
+});
+
+export const redis = new Redis(process.env.REDIS_URL);
+
+redis.connect(() => {
+  console.log("IORedis successfuly connected");
 });
 
 app.use(cors());
