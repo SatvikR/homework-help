@@ -8,8 +8,9 @@ const question_schema: Schema = new Schema(
     title: { type: String, required: true },
     description: { type: String, required: true },
     image: { type: String, required: false },
+    answered: { type: Boolean, default: false },
   },
-  {}
+  { timestamps: true }
 );
 
-export default mongoose.model<IQuestion>("name", question_schema);
+export default mongoose.model<IQuestion>("Question", question_schema);
