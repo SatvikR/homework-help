@@ -2,6 +2,8 @@ import express from "express";
 import { authenticate_token } from "../auth";
 import Question from "../models/Question";
 import { IQuestion, Search, Subject } from "../types/models";
+import User from "../models/User";
+import { IUserQuery } from "../types/query";
 
 const router = express.Router();
 
@@ -50,7 +52,25 @@ router.route("/").get(async (req, res) => {
       .skip(page * page_len)
       .limit(page_len);
 
-    return res.json(questions);
+    const u_ids: IQuestion["author"][] = questions.map((e) => e.author);
+
+    const authors: IUserQuery[] = await User.find(
+      { _id: { $in: u_ids } },
+      { username: 1 }
+    );
+
+    const response = questions.map((q) => {
+      const author = authors.find(
+        (a) => a._id.toString() === q.author.toString()
+      );
+
+      return {
+        author: author,
+        question: q,
+      };
+    });
+
+    return res.json(response);
   } catch {
     return res.status(500).json({
       error: "Internal server error",
@@ -71,12 +91,26 @@ router.route("/get").get(async (req, res) => {
     const target_question = await Question.findById(id);
 
     if (!target_question) {
+      return res.status(404).json({ error: "Question not found" });
+    }
+
+    const author: IUserQuery | null = await User.findById(
+      target_question.author,
+      {
+        username: 1,
+      }
+    );
+
+    if (!target_question) {
       return res.status(404).json({
         error: "Question not found",
       });
     }
 
-    return res.json(target_question);
+    return res.json({
+      author: author,
+      question: target_question,
+    });
   } catch {
     return res.status(500).json({
       error: "Internal server error",
@@ -101,7 +135,25 @@ router.route("/search").get(async (req, res) => {
 
     const questions = await Question.find(query);
 
-    return res.json(questions);
+    const u_ids: IQuestion["author"][] = questions.map((e) => e.author);
+
+    const authors: IUserQuery[] = await User.find(
+      { _id: { $in: u_ids } },
+      { username: 1 }
+    );
+
+    const response = questions.map((q) => {
+      const author = authors.find(
+        (a) => a._id.toString() === q.author.toString()
+      );
+
+      return {
+        author: author,
+        question: q,
+      };
+    });
+
+    return res.json(response);
   } catch {
     return res.status(500).json({
       error: "Internal server error",

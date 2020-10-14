@@ -13,6 +13,7 @@ export interface IQuestion extends Document {
   title: string;
   description: string;
   image?: string;
+  answered: boolean;
 }
 
 export interface IAnswer extends Document {
