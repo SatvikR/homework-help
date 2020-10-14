@@ -21,3 +21,10 @@ export interface IAnswer extends Document {
   answer: string;
   valid: boolean;
 }
+
+export interface Search {
+  title?: {
+    $regex: RegExp;
+  };
+  subject?: Subject;
+}

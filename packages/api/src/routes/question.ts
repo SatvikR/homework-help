@@ -1,7 +1,7 @@
 import express from "express";
 import { authenticate_token } from "../auth";
 import Question from "../models/Question";
-import { IQuestion } from "../types/models";
+import { IQuestion, Search, Subject } from "../types/models";
 
 const router = express.Router();
 
@@ -77,6 +77,84 @@ router.route("/get").get(async (req, res) => {
     }
 
     return res.json(target_question);
+  } catch {
+    return res.status(500).json({
+      error: "Internal server error",
+    });
+  }
+});
+
+router.route("/search").get(async (req, res) => {
+  try {
+    const search = req.query.search?.toString();
+    const subject = req.query.subject?.toString();
+
+    const query: Search = {};
+
+    if (search) {
+      query["title"] = { $regex: new RegExp(`${search}`) };
+    }
+
+    if (subject) {
+      query["subject"] = subject as Subject;
+    }
+
+    const questions = await Question.find(query);
+
+    return res.json(questions);
+  } catch {
+    return res.status(500).json({
+      error: "Internal server error",
+    });
+  }
+});
+
+router.route("/edit").patch(authenticate_token, async (req, res) => {
+  try {
+    const subject: IQuestion["subject"] = req.body.subject;
+    const title: IQuestion["title"] = req.body.title;
+    const description: IQuestion["description"] = req.body.description;
+    const id: IQuestion["_id"] = req.body.id;
+    const image: IQuestion["image"] = req.body.image;
+
+    if (!(subject && title && description && id)) {
+      return res.status(403).json({
+        error: "Missing fields",
+      });
+    }
+
+    const target_question = await Question.findById(id);
+
+    if (!target_question) {
+      return res.status(404).json({
+        error: "Question not found",
+      });
+    }
+
+    target_question.subject = subject;
+    target_question.title = title;
+    target_question.description = description;
+    target_question.image = image;
+
+    await target_question.save();
+
+    return res.json(target_question);
+  } catch {
+    return res.status(500).json({
+      error: "Internal server error",
+    });
+  }
+});
+
+router.route("/delete").delete(authenticate_token, async (req, res) => {
+  try {
+    const id: IQuestion["_id"] = req.body.id;
+
+    await Question.findByIdAndDelete(id);
+
+    return res.json({
+      message: "Question deleted",
+    });
   } catch {
     return res.status(500).json({
       error: "Internal server error",
