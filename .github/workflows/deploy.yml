@@ -1,4 +1,4 @@
-name: Homework Help Continuous Deployment
+name: Continuous Deployment
 
 on:
   push:
