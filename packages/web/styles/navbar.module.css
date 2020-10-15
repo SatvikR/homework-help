@@ -1,0 +1,42 @@
+/* Used in Navbar.tsx */
+
+.navbar {
+  border-bottom: 1px solid #000000;
+  display: grid;
+  grid-template-areas: "left main main main empty right";
+}
+
+.title {
+  text-decoration: none;
+  color: #000000;
+  margin-left: 2rem;
+  grid-area: left;
+}
+
+.search {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  grid-area: main;
+  border-radius: 5px;
+  border: 1px solid #000000;
+  padding-left: 1rem;
+  font-size: 18px;
+}
+
+.search::placeholder {
+  font-size: 18px;
+}
+
+.button {
+  grid-area: right;
+  text-align: center;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  margin-right: 1.5rem;
+  text-decoration: none;
+  background-color: #0070f3;
+  color: #ffffff;
+  font-size: 20px;
+  padding-top: 0.4rem;
+  border-radius: 5px;
+}
