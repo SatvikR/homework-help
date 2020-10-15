@@ -214,4 +214,34 @@ router.route("/delete").delete(authenticate_token, async (req, res) => {
   }
 });
 
+router.route("/answered").patch(authenticate_token, async (req, res) => {
+  try {
+    const id: IQuestion["_id"] = req.body.id;
+
+    if (!id) {
+      return res.status(403).json({
+        error: "Missing fields",
+      });
+    }
+
+    const target_question = await Question.findById(id);
+
+    if (!target_question) {
+      return res.status(404).json({
+        error: "Question not found",
+      });
+    }
+
+    target_question.answered = true;
+
+    await target_question.save();
+
+    return res.json(target_question);
+  } catch {
+    return res.status(500).json({
+      error: "Internal server error",
+    });
+  }
+});
+
 export default router;
