@@ -19,4 +19,10 @@ This project is a platform made for students to get help on homework and assignm
 - [Redis](https://redis.io/)
 - [React](https://reactjs.org/)
 - [Next.js](https://nextjs.org/)
+
+## Deployed With:
+
+- [AWS EC2](https://aws.amazon.com/ec2/)
 - [Docker/Docker-Compose](https://www.docker.com/)
+- [Vercel](https://vercel.com/)
+- [Github Actions](https://github.com/features/actions)
