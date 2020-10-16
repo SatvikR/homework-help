@@ -8,5 +8,12 @@ body {
 
 :root {
   --blue: #0070f3;
+  --green: #50e3c2;
+  --gray: #f1f1f1;
   --b-radius: 5px;
+}
+
+.container {
+  margin-left: 25rem;
+  margin-right: 25rem;
 }

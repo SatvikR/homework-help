@@ -1,0 +1,78 @@
+/* Used in index.tsx */
+
+.ask_q {
+  border: 1px solid black;
+  border-radius: var(--b-radius);
+  margin-top: 2rem;
+  display: grid;
+  grid-template-areas: "empty title title link";
+}
+
+.ask_title {
+  grid-area: title;
+  padding-top: 0.5rem;
+}
+
+.ask_link {
+  grid-area: link;
+  text-align: center;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  margin-right: 1.5rem;
+  text-decoration: none;
+  background-color: var(--blue);
+  color: white;
+  font-size: 20px;
+  border-radius: var(--b-radius);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding-top: 0.5rem;
+  padding-bottom: 0.6rem;
+}
+
+.heading {
+  display: grid;
+  grid-template-areas: "left empty center empty_right";
+  margin-top: 0.5rem;
+}
+
+.heading > h1 {
+  grid-area: left;
+}
+
+.dropdown {
+  grid-area: center;
+  position: relative;
+  display: inline-block;
+  margin-top: 1.5rem;
+}
+
+.dropbtn {
+  border: 1px solid black;
+  border-radius: var(--b-radius);
+  font-size: 18px;
+  background-color: white;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  font-weight: bold;
+}
+
+.dropdown_content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: var(--b-radius);
+}
+
+.dropdown_content > p {
+  margin: 0;
+  padding: 0.75rem 0.5rem 0.75rem 0.5rem;
+}
+
+.dropdown_content > p:hover {
+  background-color: var(--gray);
+  padding-left: 1rem;
+}
+
+.dropdown:hover .dropdown_content {
+  display: block;
+}
