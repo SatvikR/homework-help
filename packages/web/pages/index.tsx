@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { AskQ } from "../components/home/AskQ";
+import { Questions } from "../components/home/Questions";
 import styles from "../styles/home.module.css";
+import { QuestionResponse } from "../types/question";
 import { Subject } from "../types/subject";
-
-// TEMP
 
 const subjects: Subject[] = [
   "computer science",
@@ -15,6 +15,7 @@ const subjects: Subject[] = [
 
 const Home: React.FC = () => {
   const [subject, setSubject] = useState<Subject | null>();
+  const [check_answered, setCheck] = useState<boolean>(false);
 
   const handleSubjectClick = (s: Subject) => {
     setSubject(s);
@@ -42,7 +43,19 @@ const Home: React.FC = () => {
             <p onClick={() => handleSubjectClear()}>all</p>
           </div>
         </div>
+        <label className={styles.check}>
+          Include Answered Questions
+          <input
+            type="checkbox"
+            checked={check_answered}
+            onChange={() => setCheck(!check_answered)}
+          />
+        </label>
       </div>
+      <Questions
+        check_answered={check_answered}
+        subject={subject ? subject : undefined}
+      />
     </div>
   );
 };

@@ -1,0 +1,36 @@
+.question {
+  border: 1px solid black;
+  border-radius: var(--b-radius);
+  display: grid;
+  margin-bottom: 2rem;
+  padding: 0 0.75rem 0 0.75rem;
+  grid-template-areas:
+    "title date space_one subject"
+    "description description description description";
+}
+
+.title {
+  grid-area: title;
+}
+
+.date {
+  grid-area: date;
+  padding-top: 0.5rem;
+}
+
+.subject {
+  border-radius: var(--b-radius);
+  background-color: var(--green);
+  grid-area: subject;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.subject > p {
+  font-size: 16px;
+  padding: 0;
+}
+
+.description {
+  grid-area: description;
+}

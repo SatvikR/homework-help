@@ -31,8 +31,13 @@
 
 .heading {
   display: grid;
-  grid-template-areas: "left empty center empty_right";
+  grid-template-areas: "left empty center check";
   margin-top: 0.5rem;
+}
+
+.check {
+  grid-area: check;
+  margin-top: 1.75rem;
 }
 
 .heading > h1 {
