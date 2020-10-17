@@ -6,7 +6,7 @@
 
 > This was made for the 2nd TechWithTim CodeJam, Discord name: satvikr#6888
 
-> NOTE: Github shows that this repo has two contributers, which it doesn't. (See [this link](https://github.com/SatvikR/homework-help/graphs/contributors)). I assume the second contributer is [dependabot](https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/) which DOES NOT add any code, dependabot only updates outdated dependencies.
+> NOTE: Github shows that this repo has two contributers, which it doesn't. (See [this link](https://github.com/SatvikR/homework-help/graphs/contributors)). I assume the second contributer is [dependabot](https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/). Dependabot DOES NOT add any code, dependabot only updates outdated dependencies.
 
 ## Description
 
