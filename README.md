@@ -10,6 +10,8 @@
 
 This project is a platform made for students to get help on homework and assignments. Students can share questions, answer questions, and give feedback.
 
+Go to [hw.satvikreddy.com](https://hw.satvikreddy.com/) to check it out.
+
 ## Made With:
 
 - [Node](https://nodejs.org/)
@@ -26,3 +28,21 @@ This project is a platform made for students to get help on homework and assignm
 - [Docker/Docker-Compose](https://www.docker.com/)
 - [Vercel](https://vercel.com/)
 - [Github Actions](https://github.com/features/actions)
+
+## Run Locally:
+
+1. Clone the repo
+1. Once inside the repo's root directory, run `yarn install`
+1. Create a `.env.development` file in the `/packages/api` directory, and set 4 variables
+```
+DB_URI=<mongodb connection string, ex. mongodb://localhost:27017/cluster0>
+REDIS_URL=<redis connection string, ex. redis://localhost:6379/>
+ACCESS_TOKEN_SECRET=<a random string of characters>
+REFRESH_TOKEN_SECRET=<a different random string of characters>
+```
+4. Create a `.env.local` file in the `/packages/web` directory, and set 1 variable
+```
+NEXT_PUBLIC_API_URL=<api url, if running on default ports use http://localhost:8000>
+```
+5. Go back to the root directory of the repo in your terminal and run `yarn dev`.
+6. Go to http://localhost:3000 in your browser to view the app running, http://localhost:8000 for the api.
