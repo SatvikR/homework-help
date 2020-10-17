@@ -23,7 +23,8 @@
   background-color: var(--green);
   grid-area: subject;
   text-align: center;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .subject > p {
