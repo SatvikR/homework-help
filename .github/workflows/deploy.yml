@@ -34,6 +34,8 @@ jobs:
           envkey_ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
           envkey_REFRESH_TOKEN_SECRET: ${{ secrets.REFRESH_TOKEN_SECRET }}
           envkey_REDIS_URL: ${{ secrets.REDIS_URL }}
+          envkey_ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
+          envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
           envkey_COMPOSE_PROJECT_NAME: hw-api
           file_name: .env
       - name: Copy Build files
