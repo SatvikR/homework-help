@@ -13,4 +13,9 @@ const question_schema: Schema = new Schema(
   { timestamps: true }
 );
 
+question_schema.index(
+  { title: "text", description: "text", subject: "text" },
+  { name: "text_search", weights: { title: 10, description: 7, subject: 4 } }
+);
+
 export default mongoose.model<IQuestion>("Question", question_schema);

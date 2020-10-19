@@ -14,12 +14,13 @@ export const Question: React.FC<Props> = (props) => {
     <div className={styles.question}>
       <div className={styles.title}>
         <h2>
-          {props.author.username} asks: {props.question.title}
+          {props.author.username} asks: {props.question.title}{" "}
         </h2>
       </div>
       <div className={styles.date}>
         <p>
           Asked on {new Date(props.question.createdAt).toLocaleDateString()}
+          {props.question.answered && " (Answered)"}
         </p>
       </div>
       <div className={styles.subject}>

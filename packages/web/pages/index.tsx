@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { AskQ } from "../components/home/AskQ";
 import { Questions } from "../components/home/Questions";
 import styles from "../styles/home.module.css";
-import { QuestionResponse } from "../types/question";
 import { Subject } from "../types/subject";
 
 const subjects: Subject[] = [

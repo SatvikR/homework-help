@@ -1,7 +1,7 @@
 import express from "express";
 import { authenticate_token } from "../auth";
 import Question from "../models/Question";
-import { IQuestion, Search, Subject } from "../types/models";
+import { IQuestion } from "../types/models";
 import User from "../models/User";
 import { IUserQuery } from "../types/query";
 
@@ -121,19 +121,10 @@ router.route("/get").get(async (req, res) => {
 router.route("/search").get(async (req, res) => {
   try {
     const search = req.query.search?.toString();
-    const subject = req.query.subject?.toString();
 
-    const query: Search = {};
-
-    if (search) {
-      query["title"] = { $regex: new RegExp(`${search}`) };
-    }
-
-    if (subject) {
-      query["subject"] = subject as Subject;
-    }
-
-    const questions = await Question.find(query);
+    const questions = await Question.find(
+      search ? { $text: { $search: search } } : {}
+    );
 
     const u_ids: IQuestion["author"][] = questions.map((e) => e.author);
 

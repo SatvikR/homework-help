@@ -13,15 +13,31 @@
   grid-area: left;
 }
 
+.search_div {
+  grid-area: main;
+}
+
+.search_button {
+  text-decoration: none;
+  background-color: var(--blue);
+  color: white;
+  font-size: 20px;
+  border-radius: var(--b-radius);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin: 0.25rem 0 0 1rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
 .search {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
-  grid-area: main;
   border-radius: var(--b-radius);
   border: 1px solid black;
   padding-left: 1rem;
   font-size: 18px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 70%;
+  height: 50%;
 }
 
 .search::placeholder {

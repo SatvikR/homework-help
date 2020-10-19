@@ -1,0 +1,40 @@
+.form_root {
+  margin-top: 5rem;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.form {
+  border: 1px solid black;
+  border-radius: var(--b-radius);
+  font-size: 24px;
+  padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+  display: grid;
+}
+
+.form_field {
+  border: 1px solid black;
+  border-radius: var(--b-radius);
+  padding: 0.75rem 0.25rem 0.75rem 0.5rem;
+  font-size: 18px;
+  margin: 0.25rem 0 0.75rem 0;
+}
+
+.submit {
+  border: 1px solid black;
+  border-radius: var(--b-radius);
+  background-color: var(--blue);
+  color: white;
+  padding: 0.75rem 0.75rem;
+  font-size: 18px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-bottom: 0.25rem;
+}
+
+.error {
+  border: 1px solid var(--red);
+  border-radius: var(--b-radius);
+  background-color: var(--light-red);
+  color: var(--red);
+  margin-bottom: 1rem;
+}
