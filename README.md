@@ -6,13 +6,14 @@
 
 > This was made for the 2nd TechWithTim CodeJam, Discord name: satvikr#6888
 
-> NOTE: Github shows that this repo has two contributers, which it doesn't. (See [this link](https://github.com/SatvikR/homework-help/graphs/contributors)). I assume the second contributer is [dependabot](https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/). Dependabot DOES NOT add any code, dependabot only updates outdated dependencies.
-
 ## Description
 
 This project is a platform made for students to get help on homework and assignments. Students can share questions, answer questions, and give feedback.
 
-Go to [hw.satvikreddy.com](https://hw.satvikreddy.com/) to check it out.
+Go to [hw.satvikreddy.com](https://hw.satvikreddy.com/) to check it out. 
+
+> NOTE: Github shows that this repo has two contributers, which it doesn't. (See [this link](https://github.com/SatvikR/homework-help/graphs/contributors)). I assume the second contributer is [dependabot](https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/). Dependabot DOES NOT add any code, dependabot only updates outdated dependencies.
+
 
 ## Made With:
 
