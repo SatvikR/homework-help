@@ -2,17 +2,18 @@
 
 [![Continuous Deployment](https://github.com/SatvikR/homework-help/workflows/Continuous%20Deployment/badge.svg)](https://github.com/SatvikR/homework-help/actions?query=workflow%3A%22Continuous+Deployment%22)
 
-[![Deploy with Vercel](https://vercel.com/button)](<https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2FSatvikR%2Fhomework-help&env=NEXT_PUBLIC_API_URL&envDescription=API%20URL%20Required%20for%20this%20app.%20(The%20public%20api%20is%20https%3A%2F%2Fhwapi.satvikreddy.com%2C%20Do%20not%20use%20a%20slash%20at%20the%20end)&project-name=homework-help-project&repo-name=homework-help-project>)
+[![Deploy with Vercel](https://vercel.com/button)](<https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2FSatvikR%2Fhomework-help&env=NEXT_PUBLIC_API_URL&envDescription=API%20URL%20Required%20for%20this%20app.%20(The%20default%20api%20is%20http%3A%2F%2Flocalhost:8000%2C%20Do%20not%20use%20a%20slash%20at%20the%20end)&project-name=homework-help-project&repo-name=homework-help-project>)
 
 > This was made for the 2nd TechWithTim CodeJam, Discord name: satvikr#6888
-
-> NOTE: Github shows that this repo has two contributers, which it doesn't. (See [this link](https://github.com/SatvikR/homework-help/graphs/contributors)). I assume the second contributer is [dependabot](https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/). Dependabot DOES NOT add any code, dependabot only updates outdated dependencies.
 
 ## Description
 
 This project is a platform made for students to get help on homework and assignments. Students can share questions, answer questions, and give feedback.
 
-Go to [hw.satvikreddy.com](https://hw.satvikreddy.com/) to check it out.
+Go to [hw.satvikreddy.com](https://hw.satvikreddy.com/) to check it out. 
+
+> NOTE: Github shows that this repo has two contributers, which it doesn't. (See [this link](https://github.com/SatvikR/homework-help/graphs/contributors)). I assume the second contributer is [dependabot](https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/). Dependabot DOES NOT add any code, dependabot only updates outdated dependencies.
+
 
 ## Made With:
 
