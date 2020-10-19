@@ -4,6 +4,10 @@ import cors from "cors";
 import router from "./routes";
 import mongoose from "mongoose";
 import Redis from "ioredis";
+import multer from "multer";
+import aws from "aws-sdk";
+import image_router from "./routes/image";
+import { setup_upload, storage_engine } from "./upload";
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -32,6 +36,22 @@ export const redis = new Redis(process.env.REDIS_URL);
 redis.connect(() => {
   console.log("IORedis successfuly connected");
 });
+
+aws.config.update({
+  accessKeyId: process.env.ACCESS_KEY,
+  secretAccessKey: process.env.SECRET_KEY,
+  region: process.env.REGION,
+});
+
+console.log("Aws successfuly connected");
+
+const s3 = new aws.S3();
+
+export const upload = multer({
+  storage: storage_engine(s3),
+});
+
+setup_upload(image_router);
 
 app.use(cors());
 app.use(express.json());
