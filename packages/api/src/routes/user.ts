@@ -2,8 +2,10 @@ import express from "express";
 import User from "../models/User";
 import { IUser } from "../types/models";
 import argon2 from "argon2";
-import { generate_token, save_token } from "../auth";
+import { authenticate_token, generate_token, save_token } from "../auth";
 import { redis } from "../server";
+import Question from "../models/Question";
+import Answer from "../models/Answer";
 
 const router = express.Router();
 
@@ -110,6 +112,34 @@ router.route("/logout").delete(async (req, res) => {
 
     return res.json({
       message: "Token Deleted",
+    });
+  } catch {
+    return res.status(500).json({
+      error: "Internal server error",
+    });
+  }
+});
+
+router.route("/data").get(authenticate_token, async (_req, res) => {
+  try {
+    const user_data = await User.findById(res.locals.uid, { username: 1 });
+    const user_posts = await Question.find({ author: res.locals.uid });
+    const user_answers = await Answer.find({ author: res.locals.uid });
+
+    const response = user_posts.map((q) => {
+      return {
+        author: user_data,
+        question: q,
+      };
+    });
+
+    return res.json({
+      user_data: {
+        username: user_data?.username,
+        posts: user_posts.length,
+        answers: user_answers.length,
+      },
+      user_questions: response,
     });
   } catch {
     return res.status(500).json({

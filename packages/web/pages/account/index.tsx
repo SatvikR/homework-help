@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Login } from "../../components/account/Login";
-import { Logout } from "../../components/account/Logout";
+import { AccountInfo } from "../../components/account/AccountInfo";
 import { getLoggedIn } from "../../util/getLoggedIn";
 
 const Account: React.FC = () => {
@@ -14,7 +14,7 @@ const Account: React.FC = () => {
     <div className="container">
       {(() => {
         if (logged_in === null) return null;
-        return logged_in ? <Logout /> : <Login />;
+        return logged_in ? <AccountInfo /> : <Login />;
       })()}
     </div>
   );
