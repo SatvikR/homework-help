@@ -1,12 +1,13 @@
-import React, { useReducer, useState } from "react";
-import styles from "../../styles/form.module.css";
+import React, { useState } from "react";
+import styles from "../../../styles/form.module.css";
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
-import { login, save_token } from "../../util/login";
-import { useRouter } from "next/router";
 import Link from "next/link";
+import { signup } from "../../../util/signup";
+import { save_token } from "../../../util/login";
+import { useRouter } from "next/router";
 
-const LoginSchema = Yup.object().shape({
+const SignupSchema = Yup.object().shape({
   username: Yup.string()
     .min(3, "Too Short!")
     .max(50, "Too Long!")
@@ -15,39 +16,47 @@ const LoginSchema = Yup.object().shape({
     .min(3, "Too Short!")
     .max(50, "Too Long!")
     .required("Required"),
+  repeat: Yup.string()
+    .min(3, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required"),
 });
 
 interface IFormValues {
   username: string;
   password: string;
+  repeat: string;
 }
 
-export const Login: React.FC = () => {
-  const initialValues: IFormValues = { username: "", password: "" };
-  const [error, setError] = useState<boolean>(false);
+const Signup: React.FC = () => {
+  const initialValues: IFormValues = { username: "", password: "", repeat: "" };
+  const [error, setError] = useState<string | null>();
   const router = useRouter();
 
   return (
-    <>
+    <div className="container">
       <div className={styles.form_root}>
-        <h1>Login</h1>
+        <h1>Signup</h1>
         {error && (
           <div className={styles.error}>
-            <h3>Either your username or password was incorrect</h3>
+            <h3>{error}</h3>
           </div>
         )}
         <Formik
           initialValues={initialValues}
-          validationSchema={LoginSchema}
+          validationSchema={SignupSchema}
           onSubmit={async (values, actions) => {
             try {
-              const res = await login(values.username, values.password);
+              if (values.password !== values.repeat)
+                return setError("Make sure that your passwords match");
+
+              setError(null);
+              const res = await signup(values.username, values.password);
               save_token(res);
-              setError(false);
               router.push("/");
             } catch {
               actions.resetForm();
-              setError(true);
+              setError("That user already exists");
             }
           }}
         >
@@ -69,20 +78,31 @@ export const Login: React.FC = () => {
               required
               className={styles.form_field}
             />
+            <label htmlFor="repeat">Repeat Password</label>
+            <Field
+              id="repeat"
+              name="repeat"
+              placeholder="ex. p@ssw0rd123"
+              type="password"
+              required
+              className={styles.form_field}
+            />
             <button type="submit" className={styles.submit}>
               Submit
             </button>
           </Form>
-        </Formik>
+        </Formik>{" "}
         <small>
           <p style={{ fontSize: "16px" }}>
-            Don't have an account? Signup here
-            <Link href="/account/signup">
+            Already have an account? Login
+            <Link href="/account">
               <a className="link"> Here</a>
             </Link>
           </p>
         </small>
       </div>
-    </>
+    </div>
   );
 };
+
+export default Signup;

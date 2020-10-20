@@ -37,4 +37,5 @@
   background-color: var(--light-red);
   color: var(--red);
   margin-bottom: 1rem;
+  padding-left: 1rem;
 }
