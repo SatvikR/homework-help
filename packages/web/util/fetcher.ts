@@ -46,3 +46,27 @@ export const validate_and_fetch = async <T>(
 
   return res;
 };
+
+export const refresh_token = async () => {
+  let access = localStorage.getItem("access_token");
+  let refresh = localStorage.getItem("refresh_token");
+  let expires = localStorage.getItem("expires");
+
+  if (!(access && refresh && expires)) throw new Error("missing creds");
+
+  if (new Date(expires) <= new Date(Date.now() - 15000)) {
+    const res = await api.request<Refresh>({
+      method: "PATCH",
+      url: "/token/refresh",
+      headers: { "content-type": "application/json" },
+      data: {
+        token: refresh,
+      },
+    });
+
+    localStorage.setItem("access_token", res.data.token);
+    access = res.data.token;
+    localStorage.setItem("expires", res.data.expires);
+    expires = res.data.expires;
+  }
+};

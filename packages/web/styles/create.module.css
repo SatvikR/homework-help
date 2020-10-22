@@ -1,0 +1,67 @@
+.file_drop {
+  border: 5px solid var(--gray);
+  border-radius: var(--b-radius);
+  text-align: center;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  margin-bottom: 2rem;
+}
+
+.label {
+  font-size: 24px;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid black;
+  border-radius: var(--b-radius);
+  padding: 1rem 0 1rem 0.5rem;
+  margin: 0.75rem 0 1rem 0;
+  font-size: 18px;
+}
+
+.input::placeholder {
+  font-size: 18px;
+}
+
+.textarea {
+  width: 100%;
+  font-size: 16px;
+  border: 1px solid black;
+  border-radius: var(--b-radius);
+  margin: 1rem 0 1rem 0;
+  padding: 0.25rem 0 1rem 0.5rem;
+}
+
+.submit {
+  background-color: var(--blue);
+  color: white;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  font-size: 18px;
+  border: 1px solid var(--blue);
+  border-radius: var(--b-radius);
+  margin-bottom: 0.5rem;
+}
+
+.dropdown {
+  border: 1px solid black;
+  border-radius: var(--b-radius);
+  font-size: 18px;
+  background-color: white;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.dropdown > option {
+  position: absolute;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: var(--b-radius);
+}
+
+.ready {
+  color: var(--green);
+  font-weight: bold;
+  font-size: 18px;
+}

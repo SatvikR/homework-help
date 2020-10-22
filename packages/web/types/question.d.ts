@@ -19,3 +19,17 @@ export interface Question {
   updatedAt: string;
   __v: number;
 }
+
+export interface QuestionCreateRes {
+  answered: boolean;
+  _id: string;
+  author: string;
+  subject: string;
+  title: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+  image?: string;
+  error?: string;
+  __v: number;
+}
