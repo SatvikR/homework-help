@@ -6,7 +6,7 @@ export const AskQ: React.FC = () => {
   return (
     <div className={styles.ask_q}>
       <h2 className={styles.ask_title}>Do you need to ask a question?</h2>
-      <Link href="#">
+      <Link href="/question/create">
         <a className={styles.ask_link}>Ask a Question</a>
       </Link>
     </div>
