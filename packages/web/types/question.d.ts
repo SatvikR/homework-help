@@ -17,6 +17,7 @@ export interface Question {
   description: string;
   createdAt: string;
   updatedAt: string;
+  image?: string;
   __v: number;
 }
 
