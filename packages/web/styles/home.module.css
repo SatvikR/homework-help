@@ -81,3 +81,23 @@
 .dropdown:hover .dropdown_content {
   display: block;
 }
+
+.page_left {
+  float: left;
+  text-decoration: none;
+  color: white;
+  background-color: var(--blue);
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: var(--b-radius);
+  margin-bottom: 0.5rem;
+}
+
+.page_right {
+  float: right;
+  text-decoration: none;
+  color: white;
+  background-color: var(--blue);
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: var(--b-radius);
+  margin-bottom: 0.5rem;
+}
