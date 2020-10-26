@@ -7,6 +7,7 @@ function MyApp({ Component, pageProps }: any) {
     <>
       <Head>
         <title>Homework Help</title>
+        <link rel="manifest" href="manifest.json" />
       </Head>
       <Navbar />
       <Component {...pageProps} />
