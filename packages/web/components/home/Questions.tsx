@@ -24,9 +24,9 @@ export const Questions: React.FC<Props> = (props) => {
           props.subject ? e.question.subject === props.subject : true
         )
         .map((e, i) => (
-          <Link href={`/view/${e.question._id}`}>
+          <Link href={`/view/${e.question._id}`} key={i}>
             <a className="empty_link">
-              <Question author={e.author} question={e.question} key={i} />
+              <Question author={e.author} question={e.question} />
             </a>
           </Link>
         ))}

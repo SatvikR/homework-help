@@ -44,3 +44,34 @@
 .img_container {
   text-align: center;
 }
+
+.add {
+  margin-top: 1rem;
+  background-color: var(--blue);
+  color: white;
+  border-radius: var(--b-radius);
+  border: 1px solid var(--blue);
+  font-size: 18px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 0.5rem 1rem;
+}
+
+.input_div {
+  border: 1px solid black;
+  border-radius: var(--b-radius);
+  margin-top: 1rem;
+  padding: 1rem 1rem;
+}
+
+.label {
+  font-size: 20px;
+}
+
+.input {
+  margin-top: 1rem;
+  width: 97%;
+  border: 1px solid black;
+  border-radius: var(--b-radius);
+  font-size: 18px;
+  padding: 0.5rem 1rem;
+}

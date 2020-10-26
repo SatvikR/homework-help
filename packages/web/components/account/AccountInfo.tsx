@@ -36,9 +36,9 @@ export const AccountInfo: React.FC = () => {
       </div>
       <div>
         {data.data.user_questions.map((e, i) => (
-          <Link href={`/view/${e.question._id}`}>
+          <Link href={`/view/${e.question._id}`} key={i}>
             <a className="empty_link">
-              <Question author={e.author} question={e.question} key={i} />
+              <Question author={e.author} question={e.question} />
             </a>
           </Link>
         ))}
