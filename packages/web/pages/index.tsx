@@ -1,8 +1,11 @@
+import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { AskQ } from "../components/home/AskQ";
 import { Questions } from "../components/home/Questions";
 import styles from "../styles/home.module.css";
 import { Subject } from "../types/subject";
+import { get_page } from "../util/getQuestions";
 
 const subjects: Subject[] = [
   "computer science",
@@ -15,6 +18,7 @@ const subjects: Subject[] = [
 const Home: React.FC = () => {
   const [subject, setSubject] = useState<Subject | null>();
   const [check_answered, setCheck] = useState<boolean>(false);
+  const router = useRouter();
 
   const handleSubjectClick = (s: Subject) => {
     setSubject(s);
@@ -51,6 +55,17 @@ const Home: React.FC = () => {
           />
         </label>
       </div>
+      <div>
+        <Link href={`/?page=${get_page() > 0 ? get_page() - 1 : 0}`}>
+          <a className={styles.page_left}>Previous Page</a>
+        </Link>
+        <Link href={`/?page=${get_page() + 1}`}>
+          <a className={styles.page_right}>Next Page</a>
+        </Link>
+      </div>
+      <br />
+      <br />
+      <br />
       <Questions
         check_answered={check_answered}
         subject={subject ? subject : undefined}

@@ -123,7 +123,9 @@ router.route("/logout").delete(async (req, res) => {
 router.route("/data").get(authenticate_token, async (_req, res) => {
   try {
     const user_data = await User.findById(res.locals.uid, { username: 1 });
-    const user_posts = await Question.find({ author: res.locals.uid });
+    const user_posts = await Question.find({ author: res.locals.uid }).sort({
+      createdAt: -1,
+    });
     const user_answers = await Answer.find({ author: res.locals.uid });
 
     const response = user_posts.map((q) => {

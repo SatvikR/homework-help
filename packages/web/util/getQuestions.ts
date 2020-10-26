@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { fetcher } from "./fetcher";
 import { QuestionResponse } from "../types/question";
 
-const get_page = () => {
+export const get_page = () => {
   const router = useRouter();
 
   return typeof router.query.page === "string"

@@ -4,6 +4,7 @@ import styles from "../../styles/user.module.css";
 import { delete_tokens, logout } from "../../util/logout";
 import { useRouter } from "next/router";
 import { Question } from "../home/Question";
+import Link from "next/link";
 
 export const AccountInfo: React.FC = () => {
   const { data, error } = getUserInfo();
@@ -35,7 +36,11 @@ export const AccountInfo: React.FC = () => {
       </div>
       <div>
         {data.data.user_questions.map((e, i) => (
-          <Question author={e.author} question={e.question} key={i} />
+          <Link href={`/view/${e.question._id}`} key={i}>
+            <a className="empty_link">
+              <Question author={e.author} question={e.question} />
+            </a>
+          </Link>
         ))}
       </div>
     </div>

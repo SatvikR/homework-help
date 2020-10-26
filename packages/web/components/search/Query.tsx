@@ -1,8 +1,8 @@
-import { ECANCELED } from "constants";
 import React from "react";
 import { useRouter } from "next/router";
 import { get_query } from "../../util/getQuery";
 import { Question } from "../home/Question";
+import Link from "next/link";
 
 export const Query: React.FC = () => {
   const router = useRouter();
@@ -17,7 +17,11 @@ export const Query: React.FC = () => {
       <h1>Searches that match "{router.query.query || ""}":</h1>
       <div>
         {questions.map((e, i) => (
-          <Question author={e.author} question={e.question} key={i} />
+          <Link href={`/view/${e.question._id}`}>
+            <a className="empty_link">
+              <Question author={e.author} question={e.question} key={i} />
+            </a>
+          </Link>
         ))}
       </div>
     </div>

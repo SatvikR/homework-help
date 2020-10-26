@@ -10,10 +10,9 @@
 
 This project is a platform made for students to get help on homework and assignments. Students can share questions, answer questions, and give feedback.
 
-Go to [hw.satvikreddy.com](https://hw.satvikreddy.com/) to check it out. 
+Go to [hw.satvikreddy.com](https://hw.satvikreddy.com/) to check it out.
 
 > NOTE: Github shows that this repo has two contributers, which it doesn't. (See [this link](https://github.com/SatvikR/homework-help/graphs/contributors)). I assume the second contributer is [dependabot](https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/). Dependabot DOES NOT add any code, dependabot only updates outdated dependencies.
-
 
 ## Made With:
 
@@ -24,6 +23,7 @@ Go to [hw.satvikreddy.com](https://hw.satvikreddy.com/) to check it out.
 - [Redis](https://redis.io/)
 - [React](https://reactjs.org/)
 - [Next.js](https://nextjs.org/)
+- [CSS (not bootstrap)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
 ## Deployed With:
 
@@ -37,15 +37,22 @@ Go to [hw.satvikreddy.com](https://hw.satvikreddy.com/) to check it out.
 1. Clone the repo
 1. Once inside the repo's root directory, run `yarn install`
 1. Create a `.env.development` file in the `/packages/api` directory, and set 4 variables
+
 ```
 DB_URI=<mongodb connection string, ex. mongodb://localhost:27017/cluster0>
 REDIS_URL=<redis connection string, ex. redis://localhost:6379/>
 ACCESS_TOKEN_SECRET=<a random string of characters>
 REFRESH_TOKEN_SECRET=<a different random string of characters>
+ACCESS_KEY=<AWS IAM access key>
+SECRET_KEY=<AWS IAM secret key>
+REGION=<AWS S3 Bucket region>
 ```
+
 4. Create a `.env.local` file in the `/packages/web` directory, and set 1 variable
+
 ```
 NEXT_PUBLIC_API_URL=<api url, if running on default ports use http://localhost:8000>
 ```
+
 5. Go back to the root directory of the repo in your terminal and run `yarn dev`.
 6. Go to http://localhost:3000 in your browser to view the app running, http://localhost:8000 for the api.

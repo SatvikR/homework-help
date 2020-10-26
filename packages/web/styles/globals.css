@@ -29,3 +29,8 @@ html * {
   color: var(--blue);
   text-decoration: none;
 }
+
+.empty_link {
+  text-decoration: none;
+  color: black;
+}
