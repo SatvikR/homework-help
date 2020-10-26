@@ -35,7 +35,7 @@ export const Answer: React.FC<Props> = (props) => {
               Mark as Valid
             </button>
           ) : (
-            <p className={styles.valid_n}>Vaidity Unknown</p>
+            <p className={styles.valid_n}>Validity Unknown</p>
           )}
         </div>
       </div>
