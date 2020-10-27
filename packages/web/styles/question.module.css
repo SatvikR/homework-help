@@ -9,6 +9,18 @@
     "description description description description";
 }
 
+.user_question {
+  border: 1px solid black;
+  border-radius: var(--b-radius);
+  display: grid;
+  margin-bottom: 2rem;
+  padding: 0 0.75rem 0 0.75rem;
+  grid-template-areas:
+    "title date space_one subject"
+    "description description description edit"
+    "description description description delete";
+}
+
 .title {
   grid-area: title;
 }
@@ -36,4 +48,25 @@
 
 .description {
   grid-area: description;
+}
+
+.edit {
+  grid-area: edit;
+}
+
+.delete {
+  grid-area: delete;
+}
+
+.button {
+  float: right;
+  color: white;
+  border: 1px solid var(--blue);
+  padding: 0.5rem 1rem;
+  background-color: var(--blue);
+  font-size: 18px;
+  border-radius: var(--b-radius);
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  text-decoration: none;
 }

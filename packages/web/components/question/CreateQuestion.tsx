@@ -88,7 +88,7 @@ export const CreateQuestion: React.FC = () => {
             imageUrl
           );
 
-          router.push("/");
+          router.push("/", undefined, { shallow: true });
         }}
       >
         <Form>

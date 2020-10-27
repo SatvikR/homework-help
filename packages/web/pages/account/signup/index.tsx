@@ -53,7 +53,7 @@ const Signup: React.FC = () => {
               setError(null);
               const res = await signup(values.username, values.password);
               save_token(res);
-              router.push("/");
+              router.push("/", undefined, { shallow: true });
             } catch {
               actions.resetForm();
               setError("That user already exists");

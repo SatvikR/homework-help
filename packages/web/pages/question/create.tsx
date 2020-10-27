@@ -7,7 +7,7 @@ const Create: React.FC = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (!getLoggedIn()) router.push("/account");
+    if (!getLoggedIn()) router.push("/account", undefined, { shallow: true });
   }, []);
 
   return (

@@ -3,8 +3,8 @@ import { getUserInfo } from "../../util/getUserInfo";
 import styles from "../../styles/user.module.css";
 import { delete_tokens, logout } from "../../util/logout";
 import { useRouter } from "next/router";
-import { Question } from "../home/Question";
 import Link from "next/link";
+import { UserQuestion } from "./UserQuestion";
 
 export const AccountInfo: React.FC = () => {
   const { data, error } = getUserInfo();
@@ -17,7 +17,7 @@ export const AccountInfo: React.FC = () => {
   const handleLogout = () => {
     logout()
       .then(() => delete_tokens())
-      .then(() => router.push("/"));
+      .then(() => router.push("/", undefined, { shallow: true }));
   };
 
   return (
@@ -36,11 +36,12 @@ export const AccountInfo: React.FC = () => {
       </div>
       <div>
         {data.data.user_questions.map((e, i) => (
-          <Link href={`/view/${e.question._id}`} key={i}>
-            <a className="empty_link">
-              <Question author={e.author} question={e.question} />
-            </a>
-          </Link>
+          <UserQuestion
+            author={e.author}
+            question={e.question}
+            id={e.question._id}
+            key={i}
+          />
         ))}
       </div>
     </div>

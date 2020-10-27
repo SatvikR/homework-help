@@ -34,3 +34,7 @@ export interface QuestionCreateRes {
   error?: string;
   __v: number;
 }
+
+export interface QuestionDelete {
+  message: string;
+}

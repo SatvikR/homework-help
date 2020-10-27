@@ -44,7 +44,7 @@ export const Login: React.FC = () => {
               const res = await login(values.username, values.password);
               save_token(res);
               setError(false);
-              router.push("/");
+              router.push("/", undefined, { shallow: true });
             } catch {
               actions.resetForm();
               setError(true);
