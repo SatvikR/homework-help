@@ -20,7 +20,7 @@ const Navbar: React.FC = () => {
         <input
           type="text"
           name="Search"
-          placeholder="Search for a recipe..."
+          placeholder="Search for a question..."
           className={styles.search}
           onChange={handleInput}
         />
