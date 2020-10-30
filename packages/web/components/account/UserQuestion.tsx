@@ -20,6 +20,10 @@ export const UserQuestion: React.FC<Props> = (props) => {
     delete_question(props.id).then(() => router.reload());
   };
 
+  const handleEdit = () => {
+    router.push(`/edit/${props.id}`);
+  };
+
   return (
     <div className={styles.user_question}>
       <div className={styles.title}>
@@ -40,7 +44,9 @@ export const UserQuestion: React.FC<Props> = (props) => {
         <p>{props.question.subject}</p>
       </div>
       <div className={styles.edit}>
-        <button className={styles.button}>N/A</button>
+        <button className={styles.button} onClick={handleEdit}>
+          Edit
+        </button>
       </div>
       <div className={styles.delete}>
         <button className={styles.button} onClick={() => handleDelete()}>

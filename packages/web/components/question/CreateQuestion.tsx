@@ -37,6 +37,8 @@ export const CreateQuestion: React.FC = () => {
 
   const [image, setImage] = useState<File | null>();
   const [imageUrl, setImageUrl] = useState<string | null>();
+  const [imageUploaded, setImageUploaded] = useState<boolean>(false);
+
   const router = useRouter();
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
@@ -57,10 +59,12 @@ export const CreateQuestion: React.FC = () => {
   }, [imageUrl]);
 
   const handleUpload = () => {
-    uploadImage(image).then((res) => {
-      setImageUrl(res?.data[0].location);
-      setImage(null);
-    });
+    uploadImage(image)
+      .then((res) => {
+        setImageUrl(res?.data[0].location);
+        setImage(null);
+      })
+      .then(() => setImageUploaded(true));
   };
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
@@ -68,15 +72,23 @@ export const CreateQuestion: React.FC = () => {
   return (
     <div>
       <h1>Ask a question</h1>
-      <h2>Image for your question (optional):</h2>
-      <div {...getRootProps()} className={styles.file_drop}>
-        <input {...getInputProps()} />
-        <p>Drag and Drop Your Image</p>
-      </div>
-      {image && <p className={styles.ready}>Your image is ready to upload!</p>}
-      <button className={styles.submit} onClick={() => handleUpload()}>
-        Upload your image
-      </button>
+      {!imageUploaded ? (
+        <>
+          <h2>Image for your question (optional):</h2>
+          <div {...getRootProps()} className={styles.file_drop}>
+            <input {...getInputProps()} />
+            <p>Drag and Drop Your Image</p>
+          </div>
+          {image && (
+            <p className={styles.ready}>Your image is ready to upload!</p>
+          )}
+          <button className={styles.submit} onClick={() => handleUpload()}>
+            Upload your image
+          </button>
+        </>
+      ) : (
+        <h2>Image Uploaded successfully</h2>
+      )}
       <Formik
         initialValues={initialValues}
         validationSchema={CreateSchema}
