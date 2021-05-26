@@ -2670,9 +2670,9 @@ attr-accept@^2.2.1:
   integrity sha512-7prDjvt9HmqiZ0cl5CRjtS84sEyhsHP2coDkaZKRKVfCDo9s7iw7ChVmar78Gu9pC4SoR/28wFu/G5JJhTnqEg==
 
 aws-sdk@^2.37.0, aws-sdk@^2.774.0:
-  version "2.779.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.779.0.tgz#a87979316407c0dd6c70e1a15a4b6242abbe73e1"
-  integrity sha512-m7OBY8p9sfdbsXXDToWy1HpOY+EhzBHSuDSBRab+mVVwAUcHFFKEqgVt44gTue6tn0u/+WGwq19ie+O19t8k3w==
+  version "2.914.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.914.0.tgz#55b303d8d685dbe13cc3f89887aaccf920e4127f"
+  integrity sha512-N7UZBvTMPr+lqlOmd/vZ6NMMaw1K2Y94fq3b6roZWouUQgn5unEixVpCuRhcYleOPSnikSCIrrDs2AXq5bXhLg==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
